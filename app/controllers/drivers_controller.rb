@@ -5,6 +5,7 @@ class DriversController < ApplicationController
   # GET /drivers
   # GET /drivers.json
   def index
+    redirect_to search_drivers_path unless current_user and current_user.is_admin
     @drivers = Driver.all
   end
 

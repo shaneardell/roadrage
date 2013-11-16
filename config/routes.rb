@@ -1,4 +1,5 @@
 Roadrage::Application.routes.draw do
+  devise_for :users
   resources :drivers do
     collection do
       get :search
