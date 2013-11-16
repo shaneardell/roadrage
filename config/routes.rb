@@ -1,5 +1,10 @@
 Roadrage::Application.routes.draw do
-  resources :drivers
+  resources :drivers do
+    collection do
+      get :search
+      put :submit_query
+    end
+  end
   resources :reports, only: [ :new, :create ]
 
   # The priority is based upon order of creation: first created -> highest priority.

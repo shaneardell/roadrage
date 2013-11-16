@@ -1,0 +1,10 @@
+<h1>How's my driving?</h1>
+
+<%= form_tag submit_query_drivers_path, :method => 'put', class: 'form-inline' do %>
+  <div class="form-group">
+    <label class="sr-only" for="search">License Plate No.</label>
+    <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'License Plate No.' %>
+  </div>
+  <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+<% end %>
+

@@ -1,10 +1,25 @@
 class DriversController < ApplicationController
-  before_action :set_driver, only: [:show, :edit, :update, :destroy]
+  skip_before_action :set_driver, only: [:search, :submit_query]
+  before_action      :set_driver, only: [:show, :edit, :update, :destroy]
 
   # GET /drivers
   # GET /drivers.json
   def index
     @drivers = Driver.all
+  end
+
+  def search
+  end
+
+  def submit_query
+    @drivers = Driver.search(params[:search])
+
+    if @drivers.length > 0
+      redirect_to @drivers.first
+    else
+      flash[:notice] = "No one has reported any driving offenses. You must be a good driver!"
+      render 'search'
+    end
   end
 
   # GET /drivers/1
@@ -64,6 +79,7 @@ class DriversController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_driver
+      return if params[:id] == 'submit_query'
       @driver = Driver.find(params[:id])
     end
 

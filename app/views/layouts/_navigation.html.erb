@@ -7,10 +7,13 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active">
+      <li>
         <%= link_to('Drivers', drivers_path)  %>
       </li>
-      <li class="active">
+      <li>
+        <%= link_to("How's my driving?", search_drivers_path)  %>
+      </li>
+      <li>
         <%= link_to('Report Driver', new_report_path)  %>
       </li>
     </ul>
